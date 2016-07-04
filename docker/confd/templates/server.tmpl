@@ -1,0 +1,11 @@
+{
+	"acl_datacenter": "{{ getv "/consul/acldatacenter" }}",
+	"acl_default_policy": "deny",
+	"acl_master_token": "{{ getv "/consul/aclmastertoken" }}",
+	"bootstrap_expect": {{ getv "/consul/bootstrapexpect" }},
+	"dns_config": {
+		"allow_stale": false
+	},
+	"server": true,
+	"ui": true
+}

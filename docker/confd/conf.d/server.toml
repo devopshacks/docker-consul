@@ -1,0 +1,8 @@
+[template]
+src = "server.tmpl"
+dest = "/etc/consul/20_server.json"
+mode = "0444"
+keys = [
+  "/consul"
+]
+check_cmd = "/bin/consul configtest -config-file {{ .src }}"

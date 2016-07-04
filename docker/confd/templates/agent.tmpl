@@ -1,0 +1,18 @@
+{
+	"acl_token": "{{ getv "/consul/acltoken" }}",
+	"bind_addr": "{{ getv "/consul/bindaddr" }}",
+	"client_addr": "{{ getv "/consul/clientaddr" }}",
+	"datacenter": "{{ getv "/consul/datacenter" }}",
+	"data_dir": "/data",
+	"dns_config": {
+		"allow_stale": true,
+		"max_stale": "1s"
+	},
+	"disable_remote_exec": true,
+	"disable_update_check": true,
+	"domain": "{{ getv "/consul/domain" }}",
+	"encrypt": "{{ getv "/consul/encrypt" }}",
+	"leave_on_terminate": true,
+	"node_name": "{{ getv "/consul/nodename" }}",
+	"retry_join": {{ getv "/consul/retryjoin" }}
+}
