@@ -16,13 +16,14 @@ upload: docker-login
 	docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
 
 run-bash:
-	docker run -it --rm ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} bash -l
+	docker run -it --rm -e USER=root ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} bash -l
 
 docker-info:
 	@docker run -it --rm ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} docker-info
 
 test:
 	@for suite in spec/tests/*_spec.rb; do \
+		[ -z "$$TEST_SUITE" ] || [ "$$TEST_SUITE" = "$$suite" ] || continue; \
 		echo $$suite; \
 		DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME} DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG} bundle exec rspec $$suite; \
 	done; \

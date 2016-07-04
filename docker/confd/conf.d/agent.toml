@@ -1,0 +1,8 @@
+[template]
+src = "agent.tmpl"
+dest = "/etc/consul/10_agent.json"
+mode = "0444"
+keys = [
+  "/consul"
+]
+check_cmd = "/bin/consul configtest -config-file {{ .src }}"
