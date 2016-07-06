@@ -1,4 +1,4 @@
-FROM devopshacks/alpine-base:latest
+FROM opsidian/alpine-base:latest
 
 ENV CONSUL_BUILD_TAG=v0.6.4
 
@@ -25,7 +25,7 @@ RUN \
     && apk del go git zip \
     && rm -rf /tmp/*
 
-COPY devopshacks-release /etc/devopshacks-release
+COPY opsidian-release /etc/opsidian-release
 COPY confd /etc/confd
 COPY init.sh /usr/local/bin/docker-init
 
